@@ -8,20 +8,20 @@ var direction;
 
 
 function updateByZip(zip){
-     var url = "http://api.openweathermap.org/data/2.5/weather?" +
+     var url = "https://api.openweathermap.org/data/2.5/weather?" +
 	"zip=" + zip +
 	"&APPID=" + APPID;
-    sendRequest(url);  
-    
-   
+    sendRequest(url);
+
+
 }
 
 function updateByGeo(lat, lon){
-    var url = "http://api.openweathermap.org/data/2.5/weather?" +
+    var url = "https://api.openweathermap.org/data/2.5/weather?" +
 	"lat=" + lat +
 	"&lon=" + lon +
 	"&APPID=" + APPID;
-    sendRequest(url);    
+    sendRequest(url);
 }
 
 
@@ -37,15 +37,15 @@ function sendRequest(url){
 
 	    weather.direction = degreesToDirection(data.wind.deg);
 	    weather.loc = data.name;
-	 
+
 	    weather.temp = K2C(data.main.temp);
 	    update(weather);
-    } 
-        
+    }
+
     };
 
     xmlhttp.open("GET", url, true);
-    
+
     xmlhttp.onload = function () {
     if (xmlhttp.status == 404){
         console.log("kopa kopa")
@@ -54,7 +54,7 @@ function sendRequest(url){
 
 
     xmlhttp.send();
-   
+
 }
 
 function degreesToDirection(degrees){
@@ -72,7 +72,7 @@ function degreesToDirection(degrees){
 	high = (high + range) % 360;
     }
     return "N";
-    
+
 }
 
 
